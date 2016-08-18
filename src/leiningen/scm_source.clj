@@ -27,4 +27,5 @@
         :status   (exec "git" "status" "--porcelain")
         :author   (exec "id" "-un")}
        (json/write-str)
-       (write (:target-path project))))
+       (write (or (get-in project [:scm-source :target-path])
+                  (:target-path project)))))
